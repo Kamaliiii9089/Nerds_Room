@@ -36,7 +36,7 @@ export function TracksSection() {
             </h2>
           </div>
           <p className="text-[#073f90]/70 text-lg max-w-2xl mx-auto font-semibold">
-            Three epic tracks to prove your dominance. Pick your path and showcase your AI prowess.
+            Three epic battlegrounds to prove your dominance. Choose your method of warfare.
           </p>
         </div>
 
@@ -44,12 +44,15 @@ export function TracksSection() {
           {tracks.map((track, index) => (
             <div
               key={track.title}
-              className="group relative bg-white rounded-3xl p-8 border-4 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              className="group relative bg-white rounded-3xl p-8 border-[6px] transition-all duration-300 hover:scale-105 hover:shadow-2xl flex flex-col h-full overflow-hidden"
               style={{ borderColor: track.color }}
             >
-              {/* Track number */}
+              {/* Corner accent - Like a wall detail */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-black/5 to-transparent z-0" />
+
+              {/* Track number badge */}
               <div
-                className="absolute -top-4 -right-4 w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-lg"
+                className="absolute -top-5 -left-5 w-14 h-14 rounded-2xl rotate-12 flex items-center justify-center text-white font-black text-xl border-4 border-white shadow-lg z-10"
                 style={{ backgroundColor: track.color }}
               >
                 {index + 1}
@@ -64,7 +67,7 @@ export function TracksSection() {
               </div>
 
               <h3 className="text-xl font-black mb-3 text-[#073f90]">{track.title}</h3>
-              <p className="text-[#073f90]/70 text-sm leading-relaxed">{track.description}</p>
+              <p className="text-[#073f90]/70 text-sm leading-relaxed flex-grow">{track.description}</p>
 
               {/* Bottom accent */}
               <div className="mt-6 pt-4 border-t-2 border-dashed" style={{ borderColor: `${track.color}30` }}>

@@ -11,7 +11,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="inline-block bg-white rounded-xl p-2 mb-4">
               <Image
-                src="/images/your-20paragraph-20text-20251210-202128-0000.png"
+                src="/images/nerds-logo.png"
                 alt="Nerds Room"
                 width={100}
                 height={40}

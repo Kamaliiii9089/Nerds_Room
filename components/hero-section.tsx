@@ -39,162 +39,148 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-16 overflow-hidden bg-[#073f90]">
-      {/* Background Image */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden bg-[#073f90]">
+      {/* Background Image - Restored Background 1 */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/copy-20of-20your-20paragraph-20text-20251213-161852-0000.png"
+          src="/images/background.png"
           alt="Clash of Clans Battlefield"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#073f90]/60" />
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-32 left-8 text-5xl animate-float-slow hidden md:block">
-        <span role="img" aria-label="sword">
-          &#9876;
-        </span>
-      </div>
-      <div className="absolute top-40 right-12 text-4xl animate-float-medium hidden md:block">
-        <span role="img" aria-label="castle">
-          &#127984;
-        </span>
-      </div>
-      <div className="absolute bottom-32 left-16 text-3xl animate-float-fast hidden md:block">
-        <span role="img" aria-label="shield">
-          &#128737;
-        </span>
-      </div>
-      <div className="absolute bottom-40 right-20 text-3xl animate-float-slow hidden md:block">
-        <span role="img" aria-label="crown">
-          &#128081;
-        </span>
-      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center w-full flex flex-col items-center">
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-        <div className="mb-6 flex flex-col items-center gap-4">
-          {/* Nerds Room Community Logo */}
-          <div className="bg-white rounded-2xl p-3 shadow-lg">
+        {/* Top: Presented By Badge */}
+        {/* Top: Presented By (Prominent Logo) */}
+        <div className="mb-10 animate-fade-in-down flex flex-col items-center">
+          <span className="text-[#f1c33a] font-black text-sm uppercase tracking-[0.3em] mb-4 text-shadow-sm drop-shadow-md">
+            Presented By
+          </span>
+          <div className="relative group transition-transform hover:scale-105 duration-300">
+            <div className="absolute inset-0 bg-[#c648d7] blur-2xl opacity-20 group-hover:opacity-40 rounded-full transition-opacity" />
             <Image
-              src="/images/your-20paragraph-20text-20251210-202128-0000.png"
+              src="/images/nerds-logo.png"
               alt="Nerds Room"
-              width={140}
-              height={56}
-              className="h-12 w-auto object-contain"
-              priority
+              width={400}
+              height={160}
+              className="h-32 md:h-48 w-auto object-contain brightness-0 invert drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] relative z-10"
             />
           </div>
-          <span className="text-white/80 font-bold text-sm uppercase tracking-widest">presents</span>
         </div>
 
-        {/* Nerds AI Clash Logo - Main Title */}
-        <div className="mb-6">
+        {/* Center: Hero Title - Graphic Image */}
+        <div className="mb-12 relative z-20 hover:scale-105 transition-transform duration-500 ease-out">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#c648d7]/20 blur-3xl rounded-full" />
           <Image
-            src="/images/copy-20of-20your-20paragraph-20text-20251213-161837-0000.png"
+            src="/images/nerds-ai-clash-title.png"
             alt="NERDS AI CLASH"
-            width={550}
-            height={200}
-            className="mx-auto w-[300px] sm:w-[400px] md:w-[550px] h-auto drop-shadow-2xl"
+            width={900}
+            height={350}
+            className="relative mx-auto w-full max-w-[400px] md:max-w-[700px] lg:max-w-[850px] h-auto drop-shadow-2xl"
             priority
           />
         </div>
 
-        {/* Badge */}
-        <div className="mb-6">
-          <div className="inline-block px-6 py-2 bg-[#f1c33a] rounded-full shadow-lg">
-            <span className="text-[#073f90] font-black text-sm uppercase tracking-widest">
-              India's Premier AI Hackathon
-            </span>
+        {/* Subtitle - Glass Card for Visibility */}
+        <div className="mb-8 relative z-20">
+          <div className="bg-[#073f90]/80 backdrop-blur-md border border-white/10 rounded-2xl px-8 py-4 shadow-xl inline-block max-w-3xl">
+            <p className="text-xl md:text-2xl text-white font-bold leading-relaxed">
+              India&apos;s Premier <span className="text-[#f1c33a] drop-shadow-sm">AI Battleground</span>. Build, Deploy, and Conquer across <span className="text-[#c648d7] drop-shadow-sm">30+ Venues</span>.
+            </p>
           </div>
         </div>
 
-        {/* Date Display */}
-        <div className="mb-6">
-          <p className="text-2xl md:text-3xl text-white font-black">January 14th, 2025</p>
-        </div>
+        {/* Bottom: Modern Glass Stats Grid (Replaces Wooden Board) */}
+        <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-6 mt-4">
 
-        {/* Tagline */}
-        <p className="text-lg md:text-xl text-white/90 mb-10 font-bold max-w-2xl mx-auto">
-          Build. Battle. Conquer the AI Arena. Join 1000+ developers across 30 venues nationwide.
-        </p>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-4xl mx-auto">
-          {[
-            { value: "30+", label: "Battle Venues", icon: MapPin },
-            { value: "3", label: "War Tracks", icon: Swords },
-            { value: "10L+", label: "Prize Pool", icon: Trophy },
-            { value: "1000+", label: "Warriors", icon: Users },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="group bg-white rounded-2xl p-5 border-4 border-[#f1c33a] transition-all duration-300 hover:scale-105 hover:shadow-xl"
-            >
-              <div className="w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center bg-[#073f90]">
-                <stat.icon className="w-5 h-5 text-[#f1c33a]" />
+          {/* Left Stats */}
+          <div className="md:col-span-3 flex flex-col gap-4">
+            {[
+              { label: "Venues", value: "30+", icon: MapPin },
+              { label: "Warriors", value: "1000+", icon: Users }
+            ].map((stat, i) => (
+              <div key={i} className="group bg-[#073f90]/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-[#073f90]/60 hover:border-[#c648d7]/50 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2">
+                  <stat.icon className="w-5 h-5 text-[#f1c33a]" />
+                  <span className="text-white/60 text-xs font-bold uppercase tracking-wider">{stat.label}</span>
+                </div>
+                <div className="text-3xl font-black text-white">{stat.value}</div>
               </div>
-              <div className="text-2xl md:text-3xl font-black text-[#073f90]">{stat.value}</div>
-              <div className="text-xs text-[#8a5831] font-bold uppercase tracking-wide">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Countdown Timer */}
-        <div className="mb-10 max-w-2xl mx-auto">
-          <div className="bg-white border-4 border-[#f1c33a] rounded-2xl p-6 shadow-xl">
-            <p className="text-[#c648d7] mb-4 text-sm uppercase tracking-widest font-black">Battle Starts In</p>
+          {/* Center Timer - Hero Card */}
+          <div className="md:col-span-6 bg-gradient-to-br from-[#073f90]/60 to-[#c648d7]/20 backdrop-blur-2xl border-2 border-[#f1c33a]/50 rounded-3xl p-8 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(7,63,144,0.4)] relative overflow-hidden group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#f1c33a] to-transparent opacity-50" />
+
+            <p className="text-[#f1c33a] mb-6 text-sm font-black uppercase tracking-[0.3em]">War Begins In</p>
             {isLoaded ? (
-              <div className="flex justify-center gap-3 md:gap-4">
+              <div className="flex items-baseline gap-2 md:gap-6">
                 {[
                   { value: timeLeft.days, label: "Days" },
                   { value: timeLeft.hours, label: "Hours" },
                   { value: timeLeft.minutes, label: "Mins" },
-                  { value: timeLeft.seconds, label: "Secs" },
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col items-center">
-                    <div className="bg-[#073f90] rounded-xl px-3 py-3 md:px-6 md:py-4 min-w-[60px] md:min-w-[80px]">
-                      <div className="text-xl md:text-4xl font-black text-[#f1c33a] tabular-nums">
-                        {item.value.toString().padStart(2, "0")}
-                      </div>
+                    <div className="text-5xl md:text-7xl font-black text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] tabular-nums">
+                      {item.value.toString().padStart(2, "0")}
                     </div>
-                    <div className="text-xs text-[#073f90] uppercase tracking-wide mt-2 font-bold">{item.label}</div>
+                    <div className="text-xs text-[#c648d7] font-bold uppercase tracking-wider mt-2">{item.label}</div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-2xl font-black text-[#073f90]">January 14th, 2025</div>
+              <div className="text-4xl font-black text-white">Jan 14, 2025</div>
             )}
+
+            <div className="mt-8 w-full max-w-sm">
+              <Link
+                href="https://devfolio.co"
+                target="_blank"
+                className="flex items-center justify-center gap-3 w-full bg-[#f1c33a] hover:bg-white text-[#073f90] py-4 rounded-xl font-black text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                <Swords className="w-5 h-5" />
+                Enter Battlefield
+              </Link>
+            </div>
           </div>
+
+          {/* Right Stats */}
+          <div className="md:col-span-3 flex flex-col gap-4">
+            {[
+              { label: "Prize Pool", value: "10L+", icon: Trophy },
+              { label: "Tracks", value: "3", icon: Swords }
+            ].map((stat, i) => (
+              <div key={i} className="group bg-[#073f90]/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-[#073f90]/60 hover:border-[#c648d7]/50 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-white/60 text-xs font-bold uppercase tracking-wider">{stat.label}</span>
+                  <stat.icon className="w-5 h-5 text-[#f1c33a] ml-auto" />
+                </div>
+                <div className="text-3xl font-black text-white text-right">{stat.value}</div>
+              </div>
+            ))}
+          </div>
+
         </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link
-            href="https://devfolio.co"
-            target="_blank"
-            className="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#f1c33a] text-[#073f90] text-lg font-black rounded-xl hover:bg-white transition-all shadow-xl hover:scale-105"
-          >
-            <Swords className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-            Register on Devfolio
-          </Link>
-          <Link
-            href="#tracks"
-            className="inline-flex items-center justify-center px-10 py-5 text-lg font-black text-white bg-[#c648d7] rounded-xl hover:bg-[#a83bb8] transition-all hover:scale-105"
-          >
-            Explore Tracks
-          </Link>
-        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-slow z-10">
-        <div className="w-7 h-11 border-4 border-white rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-white rounded-full animate-bounce" />
-        </div>
-      </div>
+      {/* Global Style for Text Stroke in this component */}
+      <style jsx global>{`
+        .text-stroke-white {
+          -webkit-text-stroke: 2px white;
+          color: transparent;
+        }
+        .text-stroke-purple {
+           background: linear-gradient(180deg, #fff 0%, #c648d7 100%);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           filter: drop-shadow(0 4px 0 #8a5831);
+        }
+      `}</style>
     </section>
   )
 }

@@ -64,7 +64,7 @@ export function RoundsSection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {rounds.map((round, index) => (
+          {rounds.map((round) => (
             <div
               key={round.round}
               className="group relative bg-white rounded-3xl overflow-hidden border-4 transition-all duration-300 hover:scale-105 hover:shadow-2xl"

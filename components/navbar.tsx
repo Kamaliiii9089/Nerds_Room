@@ -1,12 +1,33 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X, Swords } from "lucide-react"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY < 10) {
+        setIsVisible(true)
+      } else if (currentScrollY > lastScrollY) {
+        setIsVisible(false) // Hide on scroll down
+      } else {
+        setIsVisible(true) // Show on scroll up
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
 
   const navLinks = [
     { name: "About", href: "#about" },
@@ -17,16 +38,19 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-[#f1c33a] shadow-md">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-[#f1c33a] shadow-md transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-18">
           <Link href="/" className="flex items-center gap-3 py-3">
             <Image
-              src="/images/your-20paragraph-20text-20251210-202128-0000.png"
+              src="/images/nerds-logo.png"
               alt="Nerds Room"
-              width={100}
-              height={40}
-              className="h-10 w-auto object-contain"
+              width={220}
+              height={88}
+              className="h-20 w-auto object-contain"
               priority
             />
           </Link>

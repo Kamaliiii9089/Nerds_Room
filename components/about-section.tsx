@@ -20,27 +20,30 @@ export function AboutSection() {
               What is <span className="text-[#c648d7]">NERDS AI CLASH</span>?
             </h2>
           </div>
+          <div className="text-[#8a5831] font-bold uppercase tracking-widest text-sm mb-2">The Story</div>
         </div>
 
         <div className="space-y-8 text-center max-w-4xl mx-auto">
-          <p className="text-xl md:text-2xl text-[#073f90] leading-relaxed font-medium">
-            <span className="font-black text-[#c648d7]">Nerds AI Clash</span> is India's most thrilling{" "}
-            <span className="font-black text-[#8a5831]">AI hackathon</span> organized by{" "}
-            <span className="font-black">Nerds Room</span> — an event dedicated to fostering innovation and community
-            collaboration.
-          </p>
+          <div className="bg-white/50 backdrop-blur-sm rounded-3xl p-8 border-4 border-[#073f90]/10 shadow-xl">
+            <p className="text-xl md:text-2xl text-[#073f90] leading-relaxed font-medium mb-6">
+              <span className="font-black text-[#c648d7]">Nerds AI Clash</span> is India's most thrilling{" "}
+              <span className="font-black text-[#8a5831]">AI hackathon</span> organized by{" "}
+              <span className="font-black">Nerds Room</span> — an event dedicated to fostering innovation and community
+              collaboration.
+            </p>
 
-          <p className="text-lg md:text-xl text-[#073f90]/80 leading-relaxed">
-            With teams competing across <span className="font-black text-[#c648d7]">30+ venues</span> nationwide, this
-            hackathon promises to be a platform where innovation knows no bounds. From AI agents to MVP development and
-            AI filmmaking, warriors will battle it out for glory and massive prizes.
-          </p>
+            <p className="text-lg md:text-xl text-[#073f90]/80 leading-relaxed mb-6">
+              With teams competing across <span className="font-black text-[#c648d7]">30+ venues</span> nationwide, this
+              hackathon promises to be a platform where innovation knows no bounds. From AI agents to MVP development and
+              AI filmmaking, warriors will battle it out for glory and massive prizes.
+            </p>
 
-          <p className="text-lg md:text-xl text-[#073f90]/80 leading-relaxed">
-            We celebrate the power of <span className="font-black text-[#8a5831]">artificial intelligence</span> and the
-            indomitable spirit of our participants. Together, we're shaping a brighter future through{" "}
-            <span className="font-black text-[#c648d7]">innovation and collaboration</span>.
-          </p>
+            <p className="text-lg md:text-xl text-[#073f90]/80 leading-relaxed">
+              We celebrate the power of <span className="font-black text-[#8a5831]">dark elixir (AI)</span> and the
+              indomitable spirit of our warriors. Together, we're building the ultimate clan through{" "}
+              <span className="font-black text-[#c648d7]">innovation and collaboration</span>.
+            </p>
+          </div>
 
           <div className="pt-8 flex justify-center gap-6 flex-wrap">
             {[
