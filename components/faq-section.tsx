@@ -1,4 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { WoodenBoardTitle } from "./wooden-board-title"
 
 const faqs = [
   {
@@ -35,37 +36,46 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section id="faq" className="py-24 px-4 bg-[#0a0f18]">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-black mb-4 text-balance text-[#ffffff]">
-            Battle <span className="text-[#f1c33a]">Questions</span>
-          </h2>
-          <p className="text-[#ffffff]/50 text-base">Everything you need to know</p>
-        </div>
+    <section id="faq" className="relative bg-gradient-to-b from-[#c648d7] to-[#a038b7]">
+      {/* Thick black separator */}
+      <div className="h-3 bg-black w-full absolute top-0 left-0"></div>
+      
+      {/* Curved white section */}
+      <div className="bg-[#c648d7] rounded-t-[150px] md:rounded-t-[250px] pt-24 pb-24 px-4">
+        {/* Inner curved content area */}
+        <div className="bg-gradient-to-b from-[#e8d5f0] to-[#f0e0f5] rounded-[100px] md:rounded-[150px] p-8 md:p-16">
+          <div className="max-w-5xl mx-auto">
+            {/* Wooden Board Header */}
+            <WoodenBoardTitle>
+              Battle <span className="text-[#fff]">Questions</span>
+            </WoodenBoardTitle>
+            
+            <p className="text-[#8a5831] text-lg text-center mb-16 font-semibold">Everything you need to know</p>
 
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="bg-[#ffffff]/[0.02] border border-[#ffffff]/10 rounded-xl px-6 data-[state=open]:border-[#f1c33a]/30 transition-colors"
-            >
-              <AccordionTrigger className="text-left text-[#ffffff] hover:text-[#f1c33a] py-5 text-sm hover:no-underline">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-[#ffffff]/50 pb-5 text-sm leading-relaxed">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+            <Accordion type="single" collapsible className="space-y-6">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-white/95 backdrop-blur-sm border-4 border-black rounded-3xl px-8 md:px-10 py-2 shadow-xl hover:shadow-2xl transition-all data-[state=open]:border-[#f1c33a]"
+                >
+                  <AccordionTrigger className="text-left text-black hover:text-[#c648d7] py-6 md:py-7 text-lg md:text-xl font-bold hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-black/70 pb-6 md:pb-7 text-base md:text-lg leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
 
-        <div className="mt-12 text-center">
-          <p className="text-[#ffffff]/40 text-sm mb-2">Still have questions?</p>
-          <a href="mailto:support@nerdsaiclash.com" className="text-[#f1c33a] text-sm font-semibold hover:underline">
-            Contact Support
-          </a>
+            <div className="mt-16 text-center">
+              <p className="text-[#073f90] text-base md:text-lg mb-3 font-semibold">Still have questions?</p>
+              <a href="mailto:support@nerdsaiclash.com" className="text-[#f1c33a] text-lg md:text-xl font-black hover:underline">
+                Contact Support
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

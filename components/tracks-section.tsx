@@ -1,4 +1,5 @@
 import { Bot, Clapperboard, Rocket } from "lucide-react"
+import { WoodenBoardTitle } from "./wooden-board-title"
 
 const tracks = [
   {
@@ -27,18 +28,18 @@ const tracks = [
 export function TracksSection() {
   return (
     <section id="tracks" className="py-24 px-4 bg-white relative overflow-hidden">
+      {/* Thick black separator */}
+      <div className="h-3 bg-black w-full absolute top-0 left-0"></div>
+      
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Header - HackOdisha style with dashed border */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-8 py-4 border-2 border-dashed border-[#073f90] rounded-xl">
-            <h2 className="text-3xl md:text-5xl font-black text-[#073f90]">
-              Choose Your <span className="text-[#c648d7]">Battlefield</span>
-            </h2>
-          </div>
-          <p className="text-[#073f90]/70 text-lg max-w-2xl mx-auto font-semibold">
-            Three epic battlegrounds to prove your dominance. Choose your method of warfare.
-          </p>
-        </div>
+        {/* Wooden Board Header */}
+        <WoodenBoardTitle>
+          Choose Your <span className="text-[#fff]">Battlefield</span>
+        </WoodenBoardTitle>
+        
+        <p className="text-[#073f90]/70 text-lg max-w-2xl mx-auto font-semibold text-center mb-16">
+          Three epic battlegrounds to prove your dominance. Choose your method of warfare.
+        </p>
 
         <div className="grid md:grid-cols-3 gap-8">
           {tracks.map((track, index) => (

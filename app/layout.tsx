@@ -1,7 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
+import { SmoothScroll } from "@/components/smooth-scroll"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -12,6 +14,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+})
+
+const clashBold = localFont({
+  src: "../Clash_Bold.otf",
+  variable: "--font-clash-bold",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -34,8 +42,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} ${clashBold.variable} font-sans antialiased`}>
+        <SmoothScroll />
         {children}
         <Analytics />
       </body>

@@ -1,4 +1,5 @@
 import { MapPin, Users, Trophy, ChevronRight } from "lucide-react"
+import { WoodenBoardTitle } from "./wooden-board-title"
 
 const rounds = [
   {
@@ -39,8 +40,11 @@ const rounds = [
 export function RoundsSection() {
   return (
     <section id="rounds" className="py-24 px-4 bg-[#f8f4ff] relative overflow-hidden">
+      {/* Thick black separator */}
+      <div className="h-3 bg-black w-full absolute top-0 left-0"></div>
+      
       {/* Decorative dots like HackOdisha */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 flex gap-2">
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 flex gap-2">
         {Array.from({ length: 15 }).map((_, i) => (
           <div
             key={i}
@@ -51,17 +55,14 @@ export function RoundsSection() {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Header - HackOdisha style with dashed border */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-8 py-4 border-2 border-dashed border-[#073f90] rounded-xl">
-            <h2 className="text-3xl md:text-5xl font-black text-[#073f90]">
-              The Battle <span className="text-[#c648d7]">Roadmap</span>
-            </h2>
-          </div>
-          <p className="text-[#073f90]/70 text-lg max-w-2xl mx-auto font-semibold">
-            Three strategic rounds from local battles to the ultimate championship at IIT Jodhpur.
-          </p>
-        </div>
+        {/* Wooden Board Header */}
+        <WoodenBoardTitle>
+          The Battle <span className="text-[#fff]">Roadmap</span>
+        </WoodenBoardTitle>
+        
+        <p className="text-[#073f90]/70 text-lg max-w-2xl mx-auto font-semibold text-center mb-16">
+          Three strategic rounds from local battles to the ultimate championship at IIT Jodhpur.
+        </p>
 
         <div className="grid md:grid-cols-3 gap-8">
           {rounds.map((round) => (

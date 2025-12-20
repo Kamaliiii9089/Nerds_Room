@@ -1,80 +1,97 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Sparkles, ArrowRight, Star } from "lucide-react"
+import { WoodenBoardTitle } from "./wooden-board-title"
 
 const sponsorTiers = [
   {
-    tier: "Title Sponsors",
+    tier: "TITLE SPONSORS",
     sponsors: [
-      { name: "Title Sponsor 1", logo: "/tech-company-logo.jpg" },
-      { name: "Title Sponsor 2", logo: "/ai-startup-logo.png" },
+      { name: "Title Sponsor 1", logo: "images/tech-company-logo.jpg" },
+      { name: "Title Sponsor 2", logo: "images/ai-startup-logo.png" },
     ],
-    size: "large",
+    badgeColor: "bg-[#f1c33a]",
+    textColor: "text-black",
   },
   {
-    tier: "Gold Sponsors",
+    tier: "GOLD SPONSORS",
     sponsors: [
-      { name: "Gold Sponsor 1", logo: "/cloud-platform-logo.jpg" },
-      { name: "Gold Sponsor 2", logo: "/software-company-logo.png" },
-      { name: "Gold Sponsor 3", logo: "/abstract-tech-logo.png" },
-      { name: "Gold Sponsor 4", logo: "/developer-tools-logo.png" },
+      { name: "Gold 1", logo: "/images/sponsors/gold1.png" },
+      { name: "Gold 2", logo: "/images/sponsors/gold2.png" },
+      { name: "Gold 3", logo: "/images/sponsors/gold3.png" },
+      { name: "Gold 4", logo: "/images/sponsors/gold4.png" },
     ],
-    size: "medium",
+    badgeColor: "bg-[#f1c33a]",
+    textColor: "text-black",
   },
   {
-    tier: "Silver Sponsors",
+    tier: "SILVER SPONSORS",
     sponsors: [
-      { name: "Silver 1", logo: "/devtools-logo.jpg" },
-      { name: "Silver 2", logo: "/cloud-services-logo.jpg" },
-      { name: "Silver 3", logo: "/generic-platform-logo.png" },
-      { name: "Silver 4", logo: "/workspace-logo.png" },
+      { name: "Silver 1", logo: "/images/sponsors/silver1.png" },
+      { name: "Silver 2", logo: "/images/sponsors/silver2.png" },
+      { name: "Silver 3", logo: "/images/sponsors/silver3.png" },
+      { name: "Silver 4", logo: "/images/sponsors/silver4.png" },
     ],
-    size: "small",
+    badgeColor: "bg-[#f1c33a]",
+    textColor: "text-black",
   },
 ]
 
 export function SponsorsSection() {
   return (
     <section id="sponsors" className="py-24 px-4 bg-white relative overflow-hidden">
+      {/* Thick black separator */}
+      <div className="h-3 bg-black w-full absolute top-0 left-0"></div>
+      
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Header - HackOdisha style */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-8 py-4 border-2 border-dashed border-[#073f90] rounded-xl">
-            <h2 className="text-3xl md:text-5xl font-black text-[#073f90]">
-              Our <span className="text-[#c648d7]">Battle Partners</span>
-            </h2>
-          </div>
-          <p className="text-[#073f90]/70 text-lg max-w-2xl mx-auto font-semibold">
-            Empowered by industry leaders and innovation champions.
-          </p>
-        </div>
+        {/* Wooden Board Header */}
+        <WoodenBoardTitle>
+          Our <span className="text-[#fff]">Battle Partners</span>
+        </WoodenBoardTitle>
+        
+        <p className="text-[#073f90]/70 text-lg max-w-2xl mx-auto font-semibold text-center mb-16">
+          Empowered by industry leaders and innovation champions.
+        </p>
 
         {/* Sponsor Tiers */}
-        <div className="space-y-12">
+        <div className="space-y-16">
           {sponsorTiers.map((tier) => (
             <div key={tier.tier}>
-              <h3 className="text-center text-sm font-black text-[#8a5831] uppercase tracking-widest mb-8">
-                {tier.tier}
-              </h3>
-              <div className="flex flex-wrap justify-center items-center gap-6">
-                {tier.sponsors.map((sponsor) => (
-                  <div
-                    key={sponsor.name}
-                    className={`group bg-[#f8f9fa] border-3 border-[#073f90]/10 rounded-xl hover:border-[#c648d7] transition-all hover:shadow-lg hover:scale-105 ${
-                      tier.size === "large" ? "px-10 py-8" : tier.size === "medium" ? "px-8 py-6" : "px-6 py-5"
-                    }`}
-                  >
-                    <Image
-                      src={sponsor.logo || "/placeholder.svg"}
-                      alt={sponsor.name}
-                      width={tier.size === "large" ? 180 : tier.size === "medium" ? 140 : 100}
-                      height={tier.size === "large" ? 72 : tier.size === "medium" ? 56 : 40}
-                      className={`object-contain opacity-60 group-hover:opacity-100 transition-opacity ${
-                        tier.size === "large" ? "h-14" : tier.size === "medium" ? "h-10" : "h-8"
-                      } w-auto`}
-                    />
-                  </div>
-                ))}
+              {/* Tier Badge - HackOdisha Style */}
+              <div className="flex justify-center mb-12">
+                <div className={`${tier.badgeColor} ${tier.textColor} px-10 py-4 rounded-full border-4 border-black shadow-xl inline-block`}>
+                  <h3 className="text-xl md:text-2xl font-black uppercase tracking-wider">
+                    {tier.tier}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Sponsor Logos in Dashed Circle Containers */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 border-4 border-[#073f90]/10 shadow-lg">
+                <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                  {tier.sponsors.map((sponsor) => (
+                    <div
+                      key={sponsor.name}
+                      className="group relative w-32 h-32 md:w-40 md:h-40"
+                    >
+                      {/* Rotating Dashed Circle Border - Only border rotates */}
+                      <div className="absolute inset-0 rounded-full border-4 border-dashed border-[#073f90]/30 group-hover:border-[#c648d7] transition-colors duration-300 animate-rotate-slow pointer-events-none"></div>
+                      
+                      {/* Static Inner Circle with Logo */}
+                      <div className="w-full h-full rounded-full flex items-center justify-center bg-white shadow-md group-hover:shadow-xl overflow-hidden">
+                        <Image
+                          src={sponsor.logo || "/placeholder.svg"}
+                          alt={sponsor.name}
+                          width={160}
+                          height={160}
+                          className="object-cover w-full h-full opacity-80 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -121,6 +138,22 @@ export function SponsorsSection() {
           </div>
         </div>
       </div>
+
+      {/* Rotation Animation */}
+      <style jsx global>{`
+        @keyframes rotate-slow {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        
+        .animate-rotate-slow {
+          animation: rotate-slow 8s linear infinite;
+        }
+      `}</style>
     </section>
   )
 }
