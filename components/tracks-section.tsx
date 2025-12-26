@@ -41,19 +41,19 @@ export function TracksSection() {
           Three epic battlegrounds to prove your dominance. Choose your method of warfare.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 pt-8">
           {tracks.map((track, index) => (
             <div
               key={track.title}
-              className="group relative bg-white rounded-3xl p-8 border-[6px] transition-all duration-300 hover:scale-105 hover:shadow-2xl flex flex-col h-full overflow-hidden"
+              className="group relative bg-white rounded-3xl p-8 pt-12 border-[6px] transition-all duration-300 hover:scale-105 hover:shadow-2xl flex flex-col h-full"
               style={{ borderColor: track.color }}
             >
               {/* Corner accent - Like a wall detail */}
               <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-black/5 to-transparent z-0" />
 
-              {/* Track number badge */}
+              {/* Track number badge - centered at top */}
               <div
-                className="absolute -top-5 -left-5 w-14 h-14 rounded-2xl rotate-12 flex items-center justify-center text-white font-black text-xl border-4 border-white shadow-lg z-10"
+                className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-xl shadow-lg z-10"
                 style={{ backgroundColor: track.color }}
               >
                 {index + 1}

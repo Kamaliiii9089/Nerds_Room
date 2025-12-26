@@ -3,6 +3,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Scroll Reveal Styles */
+.scroll-reveal {
+  margin: 20px 0;
+}
+
+.scroll-reveal-text {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.scroll-reveal-word {
+  display: inline-block;
+}
+
 /* Added advanced animations for starfield and micro-interactions */
 
 /* Starfield Animation */

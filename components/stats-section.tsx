@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Swords, Trophy, Users, MapPin, Heart, TrendingUp } from "lucide-react"
+import { Swords, Trophy, Users, MapPin, Zap, Brain, Film, Code, Rocket, Target, Award, Clock } from "lucide-react"
 
 export function StatsSection() {
   const [timeLeft, setTimeLeft] = useState({
@@ -14,9 +14,9 @@ export function StatsSection() {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    const targetDate = new Date("2025-01-14T00:00:00").getTime()
+    const targetDate = new Date("2026-01-14T00:00:00").getTime()
 
-    const interval = setInterval(() => {
+    const calculateTimeLeft = () => {
       const now = new Date().getTime()
       const difference = targetDate - now
 
@@ -27,12 +27,17 @@ export function StatsSection() {
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         })
-        setIsLoaded(true)
       } else {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        setIsLoaded(true)
       }
-    }, 1000)
+      setIsLoaded(true)
+    }
+
+    // Calculate immediately on mount
+    calculateTimeLeft()
+    
+    // Then update every second
+    const interval = setInterval(calculateTimeLeft, 1000)
 
     return () => clearInterval(interval)
   }, [])
@@ -58,141 +63,110 @@ export function StatsSection() {
           <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#5a9e7f] to-[#4a8a6f] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
             <div className="flex items-center gap-2 mb-2">
               <MapPin className="w-5 h-5 text-white/80" />
-              <Heart className="w-4 h-4 text-white/60" />
+              <Target className="w-4 h-4 text-white/60" />
             </div>
             <div className="text-7xl md:text-8xl font-black text-white mb-2">30+</div>
             <div className="text-white/90 text-sm font-bold uppercase tracking-wide">Venues Nationwide</div>
           </div>
 
-          {/* Warriors - Top Center-Left */}
+          {/* Warriors/Participants */}
           <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#6b7280] to-[#4b5563] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
-            <div className="text-white/70 text-sm font-bold uppercase tracking-wider mb-2">New Warriors</div>
-            <div className="text-6xl md:text-7xl font-black text-[#f1c33a] mb-2">1000+</div>
+            <div className="text-white/70 text-sm font-bold uppercase tracking-wider mb-2">Expected Warriors</div>
+            <div className="text-6xl md:text-7xl font-black text-[#f1c33a] mb-2">5000+</div>
             <div className="flex items-center gap-2 text-[#4ade80] font-bold text-lg">
-              <TrendingUp className="w-5 h-5" />
-              <span>+41%</span>
+              <Users className="w-5 h-5" />
+              <span>Participants</span>
             </div>
           </div>
 
-          {/* Team Info - Top Right */}
+          {/* Prize Pool Card */}
           <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#e0d4f7] to-[#d4c5f0] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
             <div className="inline-block bg-[#f1c33a] text-black px-4 py-2 rounded-2xl font-black text-sm mb-4">
-              Team of passionate designers and developers
+              <Trophy className="w-4 h-4 inline mr-2" />
+              Prize Pool
             </div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="flex -space-x-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#073f90] to-[#c648d7] border-2 border-white"></div>
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#8a5831] to-[#6b4625] border-2 border-white"></div>
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c648d7] to-[#a038b7] border-2 border-white"></div>
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#f1c33a] to-[#d1a31a] border-2 border-white flex items-center justify-center text-xs font-bold">+2</div>
-              </div>
+              <Award className="w-8 h-8 text-[#073f90]" />
             </div>
-            <div className="text-2xl font-black text-[#073f90]">Daily</div>
-            <div className="text-lg font-bold text-[#073f90]/80">New clients</div>
-            <div className="flex items-baseline gap-2 mt-2">
-              <div className="text-5xl font-black text-[#073f90]">54</div>
-              <div className="text-[#4ade80] font-bold text-lg">+40%</div>
-            </div>
+            <div className="text-5xl font-black text-[#073f90]">₹10L+</div>
+            <div className="text-lg font-bold text-[#073f90]/80 mt-2">Cash + Prizes + Swag</div>
           </div>
 
           {/* Row 2 */}
-          {/* Timer - Large Center Card */}
-          <div className="md:col-span-4 lg:col-span-4 bg-gradient-to-br from-[#d4c5f0] to-[#c4b5e0] rounded-3xl p-10 md:p-12 shadow-2xl hover:scale-[1.01] transition-all duration-300 relative overflow-hidden border-4 border-black">
-            <div className="absolute top-8 left-8 bg-[#1e293b] text-white px-4 py-2 rounded-xl text-sm font-bold">
-              {isLoaded ? `${timeLeft.hours.toString().padStart(2, "0")}h ${timeLeft.minutes.toString().padStart(2, "0")}m` : "2h 12m"}
+          {/* Countdown Timer - Large Center Card */}
+          <div className="md:col-span-4 lg:col-span-4 bg-gradient-to-br from-[#d4c5f0] to-[#c4b5e0] rounded-3xl p-6 md:p-12 shadow-2xl hover:scale-[1.01] transition-all duration-300 relative overflow-hidden border-4 border-black">
+            <div className="bg-[#1e293b] text-white px-3 md:px-4 py-2 rounded-xl text-xs md:text-sm font-bold flex items-center gap-2 w-fit">
+              <Clock className="w-3 h-3 md:w-4 md:h-4" />
+              Battle Begins Soon
             </div>
             
-            <div className="mt-12">
-              <div className="text-[#4a5568] font-black text-xl mb-4">Complete</div>
-              <div className="inline-block bg-[#d4c5f0] px-6 py-3 rounded-2xl mb-6">
-                <div className="text-3xl md:text-4xl font-black text-[#1e293b]">Revenue This Year</div>
+            <div className="mt-6 md:mt-12">
+              <div className="text-[#4a5568] font-black text-base md:text-xl mb-2 md:mb-4">Countdown to</div>
+              <div className="inline-block bg-[#d4c5f0] px-4 md:px-6 py-2 md:py-3 rounded-2xl mb-4 md:mb-6">
+                <div className="text-2xl md:text-4xl font-black text-[#1e293b]">AI CLASH</div>
               </div>
               
-              <div className="flex items-center gap-8 mb-8">
-                <div className="text-6xl md:text-7xl font-black text-[#1e293b]">4.93%</div>
-                <div className="flex items-center gap-2 text-[#ef4444]">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L11 6.414V16a1 1 0 11-2 0V6.414L7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3z"/>
-                  </svg>
-                  <span className="text-xl font-bold">-2.3%</span>
+              {/* Countdown Display */}
+              <div className="grid grid-cols-4 gap-2 md:flex md:items-center md:justify-center md:gap-8 mb-6 md:mb-8">
+                <div className="text-center bg-white/30 rounded-xl p-2 md:p-0 md:bg-transparent">
+                  <div className="text-2xl md:text-6xl font-black text-[#1e293b]">{isLoaded ? timeLeft.days : "--"}</div>
+                  <div className="text-[10px] md:text-sm font-bold text-[#4a5568] uppercase">Days</div>
+                </div>
+                <div className="text-center bg-white/30 rounded-xl p-2 md:p-0 md:bg-transparent">
+                  <div className="text-2xl md:text-6xl font-black text-[#1e293b]">{isLoaded ? timeLeft.hours.toString().padStart(2, "0") : "--"}</div>
+                  <div className="text-[10px] md:text-sm font-bold text-[#4a5568] uppercase">Hours</div>
+                </div>
+                <div className="text-center bg-white/30 rounded-xl p-2 md:p-0 md:bg-transparent">
+                  <div className="text-2xl md:text-6xl font-black text-[#1e293b]">{isLoaded ? timeLeft.minutes.toString().padStart(2, "0") : "--"}</div>
+                  <div className="text-[10px] md:text-sm font-bold text-[#4a5568] uppercase">Mins</div>
+                </div>
+                <div className="text-center bg-white/30 rounded-xl p-2 md:p-0 md:bg-transparent">
+                  <div className="text-2xl md:text-6xl font-black text-[#f1c33a]">{isLoaded ? timeLeft.seconds.toString().padStart(2, "0") : "--"}</div>
+                  <div className="text-[10px] md:text-sm font-bold text-[#4a5568] uppercase">Secs</div>
                 </div>
               </div>
 
-              {/* Chart Area */}
-              <div className="relative h-32">
-                <svg className="w-full h-full" viewBox="0 0 800 120" preserveAspectRatio="none">
-                  <path
-                    d="M 0,80 Q 100,60 200,65 T 400,55 T 600,45 T 800,35"
-                    fill="url(#gradient)"
-                    stroke="#7c3aed"
-                    strokeWidth="3"
-                    opacity="0.8"
-                  />
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#7c3aed" stopOpacity="0.3"/>
-                      <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.05"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-[#4a5568] font-medium px-2">
-                  <span>Jan</span>
-                  <span>Feb</span>
-                  <span>Mar</span>
-                  <span>Apr</span>
-                  <span>May</span>
-                  <span>Jun</span>
-                  <span>Jul</span>
-                  <span>Aug</span>
-                  <span>Sep</span>
-                </div>
-                <div className="absolute top-1/2 left-1/4 -translate-y-1/2">
-                  <div className="w-3 h-3 rounded-full bg-[#7c3aed] ring-4 ring-[#7c3aed]/30"></div>
-                </div>
+              {/* Progress Bar */}
+              <div className="relative h-3 md:h-4 bg-[#1e293b]/20 rounded-full overflow-hidden">
+                <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#7c3aed] to-[#c648d7] rounded-full animate-pulse" style={{ width: "65%" }}></div>
               </div>
+              <div className="text-center mt-2 md:mt-3 text-xs md:text-sm font-bold text-[#4a5568]">Registration Open • Jan 14, 2026</div>
             </div>
           </div>
 
-          {/* Nerds Room Logo - Right Card */}
-          <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#f8d7da] to-[#f5c2c7] rounded-3xl p-12 shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col items-center justify-center border-4 border-black">
-            <div className="w-20 h-20 mb-6 relative">
-              <div className="absolute inset-0 border-4 border-[#073f90] rounded-full"></div>
-              <div className="absolute inset-3 border-4 border-[#073f90] rounded-full"></div>
-              <div className="absolute inset-6 border-4 border-[#073f90] rounded-full"></div>
+          {/* Grand Finale Venue */}
+          <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#f8d7da] to-[#f5c2c7] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col items-center justify-center border-4 border-black">
+            <Rocket className="w-16 h-16 text-[#073f90] mb-4" />
+            <div className="text-2xl md:text-3xl font-black text-[#073f90] text-center mb-2">Grand Finale</div>
+            <div className="text-lg font-bold text-[#073f90]/80 text-center">IIT Jodhpur</div>
+            <div className="mt-4 bg-[#073f90] text-white px-4 py-2 rounded-xl text-sm font-bold">
+              Round 3
             </div>
-            <div className="text-4xl md:text-5xl font-black text-[#073f90] text-center">NERDS ROOM</div>
           </div>
 
           {/* Row 3 */}
-          {/* Font/Color Card - Bottom Left */}
+          {/* Track 1 - AI Agents */}
           <div className="md:col-span-2 lg:col-span-2 bg-[#f1c33a] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
-            <div className="text-3xl font-black text-[#1e293b] mb-4">Font</div>
-            <div className="text-xl text-[#1e293b]/80 mb-6">Sk- Modernist</div>
-            <div className="flex gap-3">
-              <div className="w-12 h-12 rounded-xl bg-[#1e293b]"></div>
-              <div className="w-12 h-12 rounded-xl bg-[#9ca3af]"></div>
-              <div className="w-12 h-12 rounded-xl bg-[#ef4444]"></div>
-              <div className="w-12 h-12 rounded-xl bg-[#fca5a5]"></div>
-            </div>
+            <Brain className="w-10 h-10 text-[#1e293b] mb-4" />
+            <div className="text-3xl font-black text-[#1e293b] mb-2">AI Agents</div>
+            <div className="text-lg text-[#1e293b]/80 mb-4">Track 1</div>
+            <div className="text-sm text-[#1e293b]/70">Build autonomous AI agents that can think, learn, and act</div>
           </div>
 
-          {/* Prize Pool - Bottom Center */}
-          <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#5a9e7f] to-[#4a8a6f] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
-            <div className="text-white/90 text-base font-bold mb-2">We Build Future of</div>
-            <div className="text-3xl md:text-4xl font-black text-[#f1c33a] mb-4">Design Industry</div>
-            <div className="text-white/80 text-sm">Crafting Meaningful UX/UI Design</div>
+          {/* Track 2 - MVP Building */}
+          <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#073f90] to-[#0a4da8] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
+            <Code className="w-10 h-10 text-white mb-4" />
+            <div className="text-3xl font-black text-white mb-2">MVP Building</div>
+            <div className="text-lg text-white/80 mb-4">Track 2</div>
+            <div className="text-sm text-white/70">Create market-ready products using AI prompting</div>
           </div>
 
-          {/* Tracks - Bottom Right */}
-          <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#5a9e7f] to-[#4a8a6f] rounded-3xl p-12 shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center border-4 border-black">
-            <div className="relative">
-              <div className="absolute inset-0 border-[6px] border-[#f1c33a]/30 rounded-full animate-pulse"></div>
-              <div className="absolute inset-6 border-[6px] border-[#f1c33a]/50 rounded-full"></div>
-              <div className="absolute inset-12 border-[6px] border-[#f1c33a] rounded-full flex items-center justify-center">
-                <div className="text-white font-black text-6xl">3</div>
-              </div>
-              <div className="w-32 h-32"></div>
-            </div>
+          {/* Track 3 - AI Films */}
+          <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#c648d7] to-[#a038b7] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
+            <Film className="w-10 h-10 text-white mb-4" />
+            <div className="text-3xl font-black text-white mb-2">AI Films</div>
+            <div className="text-lg text-white/80 mb-4">Track 3</div>
+            <div className="text-sm text-white/70">Produce stunning AI-generated films and content</div>
           </div>
         </div>
 

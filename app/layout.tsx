@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   description:
     "Join Nerds AI Clash - India's largest AI hackathon featuring AI Agent Making, MVP Development, and AI Film Making tracks. Battle across 30 venues and compete in the finals at IIT Jodhpur!",
   keywords: ["hackathon", "AI", "artificial intelligence", "coding", "IIT Jodhpur", "Nerds Room", "tech event"],
+  icons: {
+    icon: "/images/image.png",
+    shortcut: "/images/image.png",
+    apple: "/images/image.png",
+  },
   openGraph: {
     title: "Nerds AI Clash | India's Largest AI Hackathon",
     description:

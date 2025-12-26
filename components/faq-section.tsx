@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { WoodenBoardTitle } from "./wooden-board-title"
 
@@ -34,6 +37,68 @@ const faqs = [
   },
 ]
 
+function AnimatedFAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
+  const [isVisible, setIsVisible] = useState(false)
+  const [hasAnimated, setHasAnimated] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Only animate once, the first time it becomes visible
+        if (entry.isIntersecting && !hasAnimated) {
+          setIsVisible(true)
+          // After animation completes, mark as animated and stop observing
+          setTimeout(() => {
+            setHasAnimated(true)
+          }, 700 + (index * 100)) // Wait for animation to complete
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    )
+
+    if (ref.current && !hasAnimated) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [hasAnimated, index])
+
+  return (
+    <div
+      ref={ref}
+      className={hasAnimated 
+        ? "" 
+        : `transition-all duration-700 ease-out ${
+            isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`
+      }
+      style={hasAnimated ? {} : { transitionDelay: `${index * 100}ms` }}
+    >
+      <AccordionItem
+        value={`item-${index}`}
+        className="bg-white backdrop-blur-sm border-[3px] border-black rounded-2xl px-6 md:px-10 py-3 shadow-xl hover:shadow-2xl transition-all data-[state=open]:border-[#f1c33a] !border-b-[3px]"
+      >
+        <AccordionTrigger className="text-left text-black hover:text-[#c648d7] py-4 md:py-5 text-lg md:text-xl font-bold hover:no-underline">
+          {faq.question}
+        </AccordionTrigger>
+        <AccordionContent className="text-black/70 pb-4 md:pb-5 text-base md:text-lg leading-relaxed">
+          {faq.answer}
+        </AccordionContent>
+      </AccordionItem>
+    </div>
+  )
+}
+
 export function FAQSection() {
   return (
     <section id="faq" className="relative bg-gradient-to-b from-[#c648d7] to-[#a038b7]">
@@ -52,20 +117,9 @@ export function FAQSection() {
             
             <p className="text-[#8a5831] text-lg text-center mb-16 font-semibold">Everything you need to know</p>
 
-            <Accordion type="single" collapsible className="space-y-6">
+            <Accordion type="single" collapsible className="space-y-6 px-1">
               {faqs.map((faq, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="bg-white/95 backdrop-blur-sm border-4 border-black rounded-3xl px-8 md:px-10 py-2 shadow-xl hover:shadow-2xl transition-all data-[state=open]:border-[#f1c33a]"
-                >
-                  <AccordionTrigger className="text-left text-black hover:text-[#c648d7] py-6 md:py-7 text-lg md:text-xl font-bold hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-black/70 pb-6 md:pb-7 text-base md:text-lg leading-relaxed">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
+                <AnimatedFAQItem key={index} faq={faq} index={index} />
               ))}
             </Accordion>
 

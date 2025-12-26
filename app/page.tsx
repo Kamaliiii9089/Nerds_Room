@@ -7,6 +7,7 @@ import { AboutSection } from "@/components/about-section"
 import { TracksSection } from "@/components/tracks-section"
 import { RoundsSection } from "@/components/rounds-section"
 import { SponsorsSection } from "@/components/sponsors-section"
+import { BadgeCreatorSection } from "@/components/badge-creator-section"
 import { FAQSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
@@ -18,8 +19,13 @@ export default function Home() {
   const [hasEntered, setHasEntered] = useState(false)
   const [withSound, setWithSound] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const introAudioRef = useRef<HTMLAudioElement>(null)
   const combatAudioRef = useRef<HTMLAudioElement>(null)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const handleEnter = (soundEnabled: boolean) => {
     setWithSound(soundEnabled)
@@ -68,6 +74,10 @@ export default function Home() {
     }
   }
 
+  if (!isMounted) {
+    return null // Prevent server-side rendering of the component
+  }
+
   if (!hasEntered) {
     return (
       <>
@@ -79,6 +89,7 @@ export default function Home() {
           <TracksSection />
           <RoundsSection />
           <SponsorsSection />
+          <BadgeCreatorSection />
           <FAQSection />
           <Footer />
         </main>
@@ -105,6 +116,7 @@ export default function Home() {
         <TracksSection />
         <RoundsSection />
         <SponsorsSection />
+        <BadgeCreatorSection />
         <FAQSection />
         <Footer />
       </main>

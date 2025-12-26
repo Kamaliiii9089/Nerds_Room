@@ -30,6 +30,7 @@ export function LandingScreen({ onEnter }: LandingScreenProps) {
         <button
           onClick={handleEnterWithSound}
           className="group px-12 py-6 bg-white/90 hover:bg-white text-black text-xl md:text-2xl font-black rounded-2xl border-4 border-black shadow-2xl hover:scale-110 transition-all duration-300 backdrop-blur-sm"
+          suppressHydrationWarning
         >
           <div className="flex items-center gap-3">
             <Volume2 className="w-6 h-6" />
@@ -41,6 +42,7 @@ export function LandingScreen({ onEnter }: LandingScreenProps) {
         <button
           onClick={handleEnterWithoutSound}
           className="group px-12 py-6 bg-white/90 hover:bg-white text-black text-xl md:text-2xl font-black rounded-2xl border-4 border-black shadow-2xl hover:scale-110 transition-all duration-300 backdrop-blur-sm"
+          suppressHydrationWarning
         >
           <div className="flex items-center gap-3">
             <VolumeX className="w-6 h-6" />
