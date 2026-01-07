@@ -56,7 +56,7 @@ export function Navbar() {
       <div className="bg-white border-b-4 border-[#f1c33a] shadow-lg rounded-2xl max-w-5xl mx-auto">
         <div className="mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-18">
-          <Link href="/" className="flex items-center gap-3 py-3">
+          <Link href="/" className="flex items-center justify-center md:justify-start gap-3 py-3 flex-1 md:flex-initial">
             <Image
               src="/images/nerds-logo.png"
               alt="Nerds Room"

@@ -145,28 +145,28 @@ export function StatsSection() {
           </div>
 
           {/* Row 3 */}
-          {/* Track 1 - AI Agents */}
+          {/* Elite Mentorship */}
           <div className="md:col-span-2 lg:col-span-2 bg-[#f1c33a] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
             <Brain className="w-10 h-10 text-[#1e293b] mb-4" />
-            <div className="text-3xl font-black text-[#1e293b] mb-2">AI Agents</div>
-            <div className="text-lg text-[#1e293b]/80 mb-4">Track 1</div>
-            <div className="text-sm text-[#1e293b]/70">Build autonomous AI agents that can think, learn, and act</div>
+            <div className="text-3xl font-black text-[#1e293b] mb-2">Elite Mentorship</div>
+            <div className="text-lg text-[#1e293b]/80 mb-4">Expert Guidance</div>
+            <div className="text-sm text-[#1e293b]/70">Train with industry veterans and AI experts. Get personalized guidance to sharpen your skills and dominate the competition.</div>
           </div>
 
-          {/* Track 2 - MVP Building */}
+          {/* Network & Connect */}
           <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#073f90] to-[#0a4da8] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
             <Code className="w-10 h-10 text-white mb-4" />
-            <div className="text-3xl font-black text-white mb-2">MVP Building</div>
-            <div className="text-lg text-white/80 mb-4">Track 2</div>
-            <div className="text-sm text-white/70">Create market-ready products using AI prompting</div>
+            <div className="text-3xl font-black text-white mb-2">Network & Connect</div>
+            <div className="text-lg text-white/80 mb-4">Build Alliances</div>
+            <div className="text-sm text-white/70">Forge powerful connections with fellow warriors, innovators, and tech leaders. Build your tribe in the AI revolution.</div>
           </div>
 
-          {/* Track 3 - AI Films */}
+          {/* Rewards & Glory */}
           <div className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#c648d7] to-[#a038b7] rounded-3xl p-8 shadow-xl hover:scale-[1.02] transition-all duration-300 border-4 border-black">
             <Film className="w-10 h-10 text-white mb-4" />
-            <div className="text-3xl font-black text-white mb-2">AI Films</div>
-            <div className="text-lg text-white/80 mb-4">Track 3</div>
-            <div className="text-sm text-white/70">Produce stunning AI-generated films and content</div>
+            <div className="text-3xl font-black text-white mb-2">Rewards & Glory</div>
+            <div className="text-lg text-white/80 mb-4">Victory Awaits</div>
+            <div className="text-sm text-white/70">Claim your share of glory with massive prizes, exclusive swag, and recognition. Champions earn more than just bragging rights.</div>
           </div>
         </div>
 
